@@ -23,30 +23,30 @@ app.get('/', (req, res) => {
 
 
 
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "nodejs_test"
-// });
+var con = mysql.createConnection({
+  host: "stb-z.com",
+  user: "stbz_db",
+  password: "stbz_db963741",
+  database: "stbz_Test"
+});
 
-// con.connect();
+con.connect();
 
-// app.get('/info', (req, res) =>{
+app.get('/info', (req, res) =>{
 
-//     con.query('SELECT * FROM customerinfo', (error, results, fields) =>{
-//         if (error) throw error;
+    con.query('SELECT * FROM CustomerInfo', (error, results, fields) =>{
+        if (error) throw error;
 
-//         let message = "";
-//         if (results === undefined || results.length == 0){
-//             message = "No Infomation";
-//         }
-//         else{
-//             message = "Succes";
-//         }
-//         return res.send({error: false, data: results, message: message});
-//     })
-// })
+        let message = "";
+        if (results === undefined || results.length == 0){
+            message = "No Infomation";
+        }
+        else{
+            message = "Succes";
+        }
+        return res.send({error: false, data: results, message: message});
+    })
+})
 module.exports = app;
 
 
