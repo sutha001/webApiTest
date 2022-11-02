@@ -32,9 +32,9 @@ var con = mysql.createConnection({
 
 con.connect();
 
-app.get('/info', (req, res) =>{
-
-    con.query('SELECT * FROM CustomerInfo', (error, results, fields) =>{
+app.get('/info/:id', (req, res) =>{
+    
+    con.query('SELECT * FROM CustomerInfo WHERE id = '+ req.params.id, (error, results, fields) =>{
         if (error) throw error;
 
         let message = "";
